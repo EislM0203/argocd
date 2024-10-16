@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dashboard
+  namespace: argocd
+spec:
+  destination:
+    namespace: dashboard
+    server: https://kubernetes.default.svc
+  project: traunseenet
+  source:
+    path: dashboard/app/kustomization.yaml
+    repoURL: https://github.com/EislM0203/argocd
+    targetRevision: HEAD

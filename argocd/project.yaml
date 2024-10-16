@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: traunseenet
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Traunseenet
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: dashboard
+    server: https://kubernetes.default.svc
