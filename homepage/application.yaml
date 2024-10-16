@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dashboard
+  name: homepage
   namespace: argocd
 spec:
   destination:
-    namespace: dashboard
+    namespace: homepage
     server: https://kubernetes.default.svc
   project: traunseenet
   source:
-    path: dashboard/app/
+    path: homepage/app/
     repoURL: https://github.com/EislM0203/argocd
     targetRevision: HEAD
     kustomize: {}
