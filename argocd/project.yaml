@@ -12,3 +12,5 @@ spec:
   destinations:
   - namespace: dashboard
     server: https://kubernetes.default.svc
+  - namespace: homepage
+    server: https://kubernetes.default.svc
