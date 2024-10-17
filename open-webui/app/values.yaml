@@ -86,15 +86,18 @@ extraEnvVars:
   - name: ENABLE_OAUTH_SIGNUP
     value: "true"
   - name: OAUTH_CLIENT_ID
-    value: "${OPENWEBUI_OAUTH_CLIENT_ID}"
+    value: "openwebui"
   - name: OAUTH_CLIENT_SECRET
-    value: "${OPENWEBUI_OAUTH_CLIENT_SECRET}"
+    valueFrom:
+      secretKeyRef:
+        name: open-webui-oauth-secret
+        key: OAUTH_CLIENT_SECRET
   - name: OPENID_PROVIDER_URL
-    value: "${OPENWEBUI_OPENID_PROVIDER_URL}"
+    value: "https://keycloak-prod.traunseenet.com/realms/master/.well-known/openid-configuration"
   - name: OAUTH_PROVIDER_NAME
-    value: "${OPENWEBUI_OAUTH_PROVIDER_NAME}"
+    value: "Keycloak SSO"
   - name: OAUTH_SCOPES
-    value: "${OPENWEBUI_OAUTH_SCOPES}"
+    value: "openid email profile"
   # valueFrom:
   #   secretKeyRef:
   #     name: pipelines-api-key
