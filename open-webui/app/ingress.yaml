@@ -4,16 +4,16 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-  name: open-webui
+  name: ollama
   namespace: open-webui
 spec:
   tls:
     - hosts:
-        - openwebui.traunseenet.com
+        - gpt.traunseenet.com
       secretName: letsencrypt-prod
   ingressClassName: traefik
   rules:
-    - host: openwebui.traunseenet.com
+    - host: gpt.traunseenet.com
       http:
         paths:
           - backend:
