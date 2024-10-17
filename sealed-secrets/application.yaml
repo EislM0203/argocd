@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sealed-secrets
+  namespace: argocd
+spec:
+  destination:
+    namespace: sealed-secrets
+    server: https://kubernetes.default.svc
+  project: traunseenet
+  source:
+    path: osealed-secrets/app/
+    repoURL: https://github.com/EislM0203/argocd
+    targetRevision: HEAD
+    kustomize: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
