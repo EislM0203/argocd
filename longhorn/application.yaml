@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: minio-backup
+  name: longhorn
   namespace: argocd
 spec:
   destination:
-    namespace: minio
+    namespace: longhorn
     server: https://kubernetes.default.svc
   project: traunseenet
   source:
-    path: minio/app/
+    path: longhorn/app/
     repoURL: https://github.com/EislM0203/argocd
     targetRevision: HEAD
     kustomize: {}

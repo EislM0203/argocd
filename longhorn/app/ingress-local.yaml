@@ -1,25 +1,26 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: traefik-dashboard
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
     traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  name: longhorn-ingress
+  namespace: longhorn
 spec:
   tls:
     - hosts:
-      - traefik-dashboard.local.traunseenet.com
-      secretName: letsencrypt-prod-local
+        - longhorn.local.traunseenet.com
+      secretName: letsencrypt-prod
   ingressClassName: traefik
   rules:
-    - host: traefik-dashboard.local.traunseenet.com
+    - host: longhorn.local.traunseenet.com
       http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
+          - backend:
               service:
-                name: traefik-api
+                name: longhorn-frontend
                 port:
-                  name: traefik
+                  number: 80
+            path: /
+            pathType: Prefix
