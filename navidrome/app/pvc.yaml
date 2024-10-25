@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: navidrome-pvc-data-longhorn
+  annotations:
+    numberOfReplicas: '1'
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: longhorn-storage
+  resources:
+    requests:
+      storage: 10Gi
+status: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: navidrome-pvc-music-longhorn
+  annotations:
+    numberOfReplicas: '1'
+spec:
+  accessModes: ["ReadWriteMany"]
+  storageClassName: longhorn-storage
+  resources:
+    requests:
+      storage: 100Gi
+status: {}
