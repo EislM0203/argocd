@@ -30,6 +30,8 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: navidrome
     server: https://kubernetes.default.svc
+  - namespace: utility
+    server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: rbac.authorization.k8s.io
     kind: ClusterRole
