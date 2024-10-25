@@ -5,7 +5,7 @@ resources:
   - sealedsecret.yaml
 helmCharts:
   - name: keycloak
-    repo: oci://registry-1.docker.io/bitnamicharts/keycloak
+    repo: oci://registry-1.docker.io/bitnamicharts
     releaseName: keycloak
     namespace: keycloak
     valuesFile: values.yaml
