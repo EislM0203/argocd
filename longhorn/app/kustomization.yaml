@@ -12,3 +12,4 @@ helmCharts:
     namespace: longhorn
     valuesFile: values.yaml
     version: 1.7.2
+    includeCRDs: true
