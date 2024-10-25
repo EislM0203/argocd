@@ -7,3 +7,4 @@ helmCharts:
     releaseName: sealed-secrets
     namespace: sealed-secrets
     version: 2.16.1
+    includeCRDs: true
