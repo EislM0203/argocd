@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-pvc-ml-longhorn
+  annotations:
+    numberOfReplicas: '1'
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: longhorn-storage
+status: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-pvc-server-longhorn
+  annotations:
+    numberOfReplicas: '1'
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 200Gi
+  storageClassName: longhorn-storage
+status: {}
