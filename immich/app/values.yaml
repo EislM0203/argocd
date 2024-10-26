@@ -3,6 +3,8 @@
 ## Refer there for more detail about the supported values
 
 # These entries are shared between all the Immich components
+image:
+  tag: v1.117.0
 immich:
   metrics:
     # Enabling this will create the service monitors needed to monitor immich with the prometheus operator
