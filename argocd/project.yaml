@@ -42,6 +42,8 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: jellyfin
     server: https://kubernetes.default.svc
+  - namespace: minio
+    server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: rbac.authorization.k8s.io
     kind: ClusterRole
@@ -69,4 +71,6 @@ spec:
     kind: ValidatingWebhookConfiguration
   - group: admissionregistration.k8s.io
     kind: MutatingWebhookConfiguration
+  - group: ""
+    kind: PersistentVolume
   
