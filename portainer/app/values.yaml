@@ -18,4 +18,4 @@ service:
 
 persistance:
   enabled: true
-  existingClaim: portainer
+  existingClaim: portainer-longhorn

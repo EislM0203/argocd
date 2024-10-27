@@ -42,6 +42,10 @@ postgresql:
         database: immich
         password: immich
   primary:
+    containerSecurityContext:
+      runAsNonRoot: false
+      runAsUser: 0
+      runAsGroup: 0
     persistance:
       enabled: true
       existingClaim: data-immich-postgresql-0
@@ -54,6 +58,10 @@ postgresql:
 
 redis:
   master:
+    containerSecurityContext:
+      runAsUser: 0
+      runAsGroup: 0
+      runAsNonRoot: false
     persistance:
       enabled: true
       existingClaim: redis-data-immich-redis-master-0
