@@ -40,6 +40,8 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: seafile
     server: https://kubernetes.default.svc
+  - namespace: jellyfin
+    server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: rbac.authorization.k8s.io
     kind: ClusterRole
