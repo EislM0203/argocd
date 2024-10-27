@@ -4,3 +4,4 @@ namespace: observability
 resources:
 - otelcol
 - jaeger
+- grafana-beyla
