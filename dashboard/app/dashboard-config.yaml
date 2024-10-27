@@ -22,16 +22,16 @@ data:
             href: https://keycloak-prod.traunseenet.com/
             ping: https://keycloak-prod.traunseenet.com/
             description: Authentication mechanism for most services in the cluster
-        - Open-WebUI:
-            icon: ollama.png
-            href: https://openwebui.traunseenet.com/
-            ping: https://openwebui.traunseenet.com/
-            description: Web-Ui for self-hosted LLMs
         - Usememos:
             icon: todo.png
             href: https://usememos.traunseenet.com/
             ping: https://usememos.traunseenet.com/
             description: Keeping ToDos & Notes up to date
+        - Navidrome:
+            icon: navidrome.png
+            href: https://navidrome.traunseenet.com/
+            ping: https://navidrome.traunseenet.com/
+            description: Music streaming server
     - Private Services:
         - Jaeger & Opentelemetry Collector:
             icon: jaeger.png
