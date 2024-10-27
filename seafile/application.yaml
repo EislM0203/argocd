@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: seafile
+  namespace: argocd
+spec:
+  destination:
+    namespace: seafile
+    server: https://kubernetes.default.svc
+  project: traunseenet
+  source:
+    path: seafile/app/
+    repoURL: https://github.com/EislM0203/argocd
+    targetRevision: HEAD
+    kustomize: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
