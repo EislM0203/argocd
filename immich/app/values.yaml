@@ -42,6 +42,9 @@ postgresql:
         database: immich
         password: immich
   primary:
+    persistance:
+      enabled: true
+      existingClaim: data-immich-postgresql-0
     initdb:
       scripts:
         create-extensions.sql: |
@@ -50,6 +53,10 @@ postgresql:
           CREATE EXTENSION vectors;
 
 redis:
+  master:
+    persistance:
+      enabled: true
+      existingClaim: redis-data-immich-redis-master-0
   enabled: true
   architecture: standalone
   auth:

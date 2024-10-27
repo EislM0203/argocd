@@ -28,3 +28,33 @@ spec:
       storage: 200Gi
   storageClassName: longhorn-storage
 status: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-data-immich-redis-master-0
+  annotations:
+    numberOfReplicas: '1'
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: longhorn-storage
+status: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-immich-postgresql-0
+  annotations:
+    numberOfReplicas: '1'
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: longhorn-storage
+status: {}

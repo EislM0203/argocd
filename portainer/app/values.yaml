@@ -18,4 +18,4 @@ service:
 
 persistance:
   enabled: true
-  storageClass: longhorn-storage
+  existingClaim: portainer

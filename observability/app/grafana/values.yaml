@@ -17,5 +17,4 @@ ingress:
         - grafana.local.traunseenet.com
 persistence:
   enabled: true
-  size: 25Gi
-  storageClass: longhorn-storage
+  existingClaim: grafana-longhorn
