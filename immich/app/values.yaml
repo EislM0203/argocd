@@ -29,6 +29,8 @@ immich:
 # Dependencies
 
 postgresql:
+  volumePermissions:
+    enabled: true
   readReplicas:
     resourcesPreset: "large"
   enabled: true
@@ -42,10 +44,6 @@ postgresql:
         database: immich
         password: immich
   primary:
-    containerSecurityContext:
-      runAsNonRoot: false
-      runAsUser: 0
-      runAsGroup: 0
     persistance:
       enabled: true
       existingClaim: data-immich-postgresql-0
@@ -57,11 +55,9 @@ postgresql:
           CREATE EXTENSION vectors;
 
 redis:
+  volumePermissions:
+    enabled: true
   master:
-    containerSecurityContext:
-      runAsUser: 0
-      runAsGroup: 0
-      runAsNonRoot: false
     persistance:
       enabled: true
       existingClaim: redis-data-immich-redis-master-0
