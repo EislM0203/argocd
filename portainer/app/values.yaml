@@ -16,6 +16,6 @@ ingress:
 service:
   type: ClusterIP
 
-persistance:
+persistence:
   enabled: true
   existingClaim: portainer-longhorn
