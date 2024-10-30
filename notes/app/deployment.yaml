@@ -26,6 +26,10 @@ spec:
                   key: JWT_SECRET
             - name: CORS_ORIGINS
               value: "https://notes.traunseenet.com"
+            - name: NOTE_SIZE_LIMIT
+              value: "10M"
+            - name: ASSET_SIZE_LIMIT
+              value: "50M"
           volumeMounts:
             - mountPath: /data
               name: note-mark-data
