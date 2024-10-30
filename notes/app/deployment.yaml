@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: note-mark
+  namespace: utility
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: note-mark
+  template:
+    metadata:
+      labels:
+        app: note-mark
+    spec:
+      containers:
+        - name: note-mark
+          image: ghcr.io/enchant97/note-mark-aio:0.14.1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: note-mark-secret
+                  key: JWT_SECRET
+            - name: CORS_ORIGINS
+              value: "https://notes.traunseenet.com"
+          volumeMounts:
+            - mountPath: /data
+              name: note-mark-data
+      volumes:
+        - name: note-mark-data
+          persistentVolumeClaim:
+            claimName: note-mark-pvc
+      restartPolicy: Always
