@@ -18,6 +18,17 @@ spec:
           ports:
             - containerPort: 3000
           env:
+            - name: OAUTH_WELLKNOWN_URL
+              value: https://keycloak-prod.traunseenet.com/realms/master/.well-known/openid-configuration
+            - name: OAUTH_CLIENT_ID
+              value: hoarder
+            - name: OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: hoarder-secret
+                  key: OAUTH_CLIENT_SECRET
+            - name: OAUTH_PROVIDER_NAME
+              value: Keycloak
             - name: MEILI_ADDR
               value: http://meilisearch:7700
             - name: BROWSER_WEB_URL
