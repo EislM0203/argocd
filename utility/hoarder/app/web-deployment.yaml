@@ -18,6 +18,10 @@ spec:
           ports:
             - containerPort: 3000
           env:
+            - name: DISABLE_PASSWORD_AUTH
+              value: "true"
+            - name: DISABLE_SIGNUPS
+              value: "true"
             - name: OAUTH_WELLKNOWN_URL
               value: https://keycloak-prod.traunseenet.com/realms/master/.well-known/openid-configuration
             - name: OAUTH_CLIENT_ID
