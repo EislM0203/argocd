@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: note-mark-ingress
+  namespace: utility
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
+spec:
+  tls:
+    - hosts:
+        - tools.traunseenet.com
+      secretName: letsencrypt-prod-tools
+  ingressClassName: traefik
+  rules:
+    - host: tools.traunseenet.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: it-tools
+                port:
+                  number: 8000

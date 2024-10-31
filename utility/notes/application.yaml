@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: traunseenet
   source:
-    path: notes/app/
+    path: utility/notes/app/
     repoURL: https://github.com/EislM0203/argocd
     targetRevision: HEAD
     kustomize: {}
