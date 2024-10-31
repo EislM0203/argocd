@@ -22,6 +22,8 @@ spec:
               value: https://keycloak-prod.traunseenet.com/realms/master/.well-known/openid-configuration
             - name: OAUTH_CLIENT_ID
               value: hoarder
+            - name: OAUTH_SCOPE
+              value: "openid profile email"
             - name: OAUTH_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
