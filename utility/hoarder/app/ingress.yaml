@@ -20,6 +20,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: hoarder-web
+                name: web
                 port:
                   number: 3000
