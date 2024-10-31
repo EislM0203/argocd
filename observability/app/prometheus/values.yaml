@@ -130,7 +130,7 @@ grafana:
   enabled: false
   forceDeployDashboards: true
 alertmanager:
-  enabled: false
+  enabled: true
   ingress:
     enabled: true
     className: traefik-external

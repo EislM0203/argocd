@@ -73,4 +73,18 @@ spec:
     kind: MutatingWebhookConfiguration
   - group: ""
     kind: PersistentVolume
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+  - group: monitoring.coreos.com
+    kind: Prometheus
+  - group: monitoring.coreos.com
+    kind: Alertmanager
+  - group: monitoring.coreos.com
+    kind: AlertmanagerConfig
+  - group: monitoring.coreos.com
+    kind: ThanosRuler
+  - group: monitoring.coreos.com
+    kind: ScrapeConfig
+  - group: monitoring.coreos.com
+    kind: PrometheusAgent
   
