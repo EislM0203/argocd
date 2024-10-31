@@ -1,0 +1,155 @@
+crds:
+  enabled: true
+defaultRules:
+  create: true
+  rules:
+    alertmanager:                     false
+    etcd:                             true
+    configReloaders:                  true
+    general:                          true
+    k8sContainerCpuUsageSecondsTotal: true
+    k8sContainerMemoryCache:          true
+    k8sContainerMemoryRss:            true
+    k8sContainerMemorySwap:           true
+    k8sContainerResource:             true
+    k8sContainerMemoryWorkingSetBytes: true
+    k8sPodOwner:                      true
+    kubeApiserverAvailability:        true
+    kubeApiserverBurnrate:            true
+    kubeApiserverHistogram:           true
+    kubeApiserverSlos:                true
+    kubeControllerManager:            true
+    kubelet:                          true
+    kubeProxy:                        true
+    kubePrometheusGeneral:            true
+    kubePrometheusNodeRecording:      true
+    kubernetesApps:                   true
+    kubernetesResources:              true
+    kubernetesStorage:                true
+    kubernetesSystem:                 true
+    kubeSchedulerAlerting:             true
+    kubeSchedulerRecording:           true
+    kubeStateMetrics:                 true
+    network:                         true
+    node:                             true
+    nodeExporterAlerting:            true
+    nodeExporterRecording:             true
+    prometheus:                      true
+    prometheusOperator:               true
+    windows:                        true
+## Setting to true produces cleaner resource names, but requires a data migration because the name of the persistent volume changes. Therefore this should only be set once on initial installation.
+##
+cleanPrometheusOperatorObjectNames: true
+
+## Extra manifests to deploy as an array
+extraManifests: []
+
+# kubeApiServer:
+#   enabled: false
+# kubelet:
+#   enabled: false
+# kubeControllerManager:
+#   enabled: false
+# coreDns:
+#   enabled: false
+# kubeDns:
+#   enabled: false
+# kubeEtcd:
+#   enabled: false
+# kubeScheduler:
+#   enabled: false
+# kubeProxy:
+#   enabled: false
+# kubeStateMetrics:
+#   enabled: false
+# ## Deploy node exporter as a daemonset to all nodes
+# nodeExporter:
+#   enabled: false
+# prometheusOperator:
+#   enabled: true
+#   services:
+#     type: "LoadBalancer"
+prometheus:
+  enabled: true
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - prometheus.local.traunseenet.com
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
+    tls:
+      - secretName: letsencrypt-prod-prometheus
+        hosts:
+          - prometheus.local.traunseenet.com
+  prometheusSpec:
+    podMonitorSelectorNilUsesHelmValues: false
+    probeSelectorNilUsesHelmValues: false
+    ruleSelectorNilUsesHelmValues: false
+    scrapeConfigSelectorNilUsesHelmValues: false
+    serviceMonitorSelectorNilUsesHelmValues: false
+    enableAdminAPI: true
+    walCompression: true
+    enableFeatures:
+      - auto-gomemlimit
+      - memory-snapshot-on-shutdown
+      - new-service-discovery-manager
+      - exemplar-storage
+    retention: 14d
+    retentionSize: 8GB
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: longhorn-storage
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+        selector: {}
+    additionalScrapeConfigs: | 
+      - job_name: 'kubernetes-pods'
+        kubernetes_sd_configs:
+        - role: pod
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+            action: keep
+            regex: true
+      - job_name: 'kubernetes-endpoints'
+        scrape_interval: 30s
+        kubernetes_sd_configs:
+          - role: endpoints
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+            action: keep
+            regex: true
+  service:
+    type: "LoadBalancer"
+grafana:
+  enabled: false
+  forceDeployDashboards: true
+alertmanager:
+  enabled: true
+  ingress:
+    enabled: true
+    className: traefik-external
+    hosts:
+      - alertmanager.local.traunseenet.com
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
+    tls:
+      - secretName: letsencrypt-prod-alertmanager
+        hosts:
+          - alertmanager.local.traunseenet.com
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: longhorn-storage
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 8Gi
+        selector: {}

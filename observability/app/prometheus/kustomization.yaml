@@ -1,13 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: observability
-resources:
-  - sealedsecret.yaml
 helmCharts:
-  - name: grafana
-    repo: https://grafana.github.io/helm-charts
-    releaseName: grafana
+  - name: kube-prometheus-stack
+    repo: https://prometheus-community.github.io/helm-charts
+    releaseName: kube-prometheus-stack
     namespace: observability
     valuesFile: values.yaml
-    version: 8.5.8
+    version: 65.5.0
     includeCRDs: true

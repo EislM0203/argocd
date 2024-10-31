@@ -1,3 +1,19 @@
+env:
+  GF_DATE_FORMATS_USE_BROWSER_LOCALE: true
+  GF_EXPLORE_ENABLED: true
+  GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: natel-discrete-panel,pr0ps-trackmap-panel,panodata-map-panel
+  GF_SECURITY_ANGULAR_SUPPORT_ENABLED: true
+grafana.ini:
+  analytics:
+    check_for_updates: false
+    check_for_plugin_updates: false
+    reporting_enabled: false
+  news:
+    news_feed_enabled: false
+  auth.anonymous:
+    enabled: true
+  server:
+    root_url: https://grafana.local.traunseenet.com
 ingress:
   enabled: true
   # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
@@ -16,5 +32,57 @@ ingress:
       hosts:
         - grafana.local.traunseenet.com
 persistence:
-  enabled: true
-  existingClaim: grafana-longhorn
+  enabled: false
+admin:
+  existingSecret: "grafana-admin-credentials"
+  userKey: admin-user
+  passwordKey: admin-password
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    deleteDatasources:
+      - { name: Alertmanager, orgId: 1 }
+      - { name: Prometheus, orgId: 1 }
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        uid: prometheus
+        access: proxy
+        url: http://prometheus-operated.observability.svc.cluster.local:9090
+        jsonData:
+          timeInterval: 1m
+        isDefault: true
+        readOnly: false
+      - name: Alertmanager
+        type: alertmanager
+        uid: alertmanager
+        access: proxy
+        url: http://alertmanager-operated.observability.svc.cluster.local:9093
+        jsonData:
+          implementation: prometheus
+        readOnly: false
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+          - name: default
+            orgId: 1
+            folder: ""
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/default
+sidecar:
+  dashboards:
+    enabled: true
+    searchNamespace: ALL
+    label: grafana_dashboard
+    folderAnnotation: grafana_folder
+    provider:
+      disableDelete: true
+      foldersFromFilesStructure: true
+  datasources:
+    enabled: true
+    searchNamespace: ALL
+    labelValue: ""
