@@ -24,12 +24,34 @@ spec:
               value: http://chrome:9222
             - name: DATA_DIR
               value: /data
+            - name: HOARDER_VERSION
+              valueFrom:
+                secretKeyRef:
+                  name: hoarder-secret
+                  key: HOARDER_VERSION
+            - name: NEXTAUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: hoarder-secret
+                  key: NEXTAUTH_SECRET
+            - name: MEILI_MASTER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: hoarder-secret
+                  key: MEILI_MASTER_KEY
+            - name: NEXTAUTH_URL
+              valueFrom:
+                secretKeyRef:
+                  name: hoarder-secret
+                  key: NEXTAUTH_URL
+            - name: NEXT_PUBLIC_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: hoarder-secret
+                  key: NEXT_PUBLIC_SECRET
           volumeMounts:
             - mountPath: /data
               name: data
-          envFrom:
-            - secretRef:
-              name: hoarder-secret
       volumes:
         - name: data
           persistentVolumeClaim:
