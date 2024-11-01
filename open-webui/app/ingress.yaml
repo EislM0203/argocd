@@ -9,11 +9,11 @@ metadata:
 spec:
   tls:
     - hosts:
-        - openwebui.traunseenet.com
-      secretName: letsencrypt-prod
+        - gpt.traunseenet.com
+      secretName: letsencrypt-prod-gpt
   ingressClassName: traefik
   rules:
-    - host: openwebui.traunseenet.com
+    - host: gpt.traunseenet.com
       http:
         paths:
           - backend:
