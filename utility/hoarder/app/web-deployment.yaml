@@ -35,6 +35,12 @@ spec:
                   key: OAUTH_CLIENT_SECRET
             - name: OAUTH_PROVIDER_NAME
               value: Keycloak
+            - name: OLLAMA_BASE_URL
+              value: http://10.0.0.239:11434
+            - name: INFERENCE_TEXT_MODEL
+              value: dolphin-mistral
+            - name: INFERENCE_IMAGE_MODEL
+              value: llava
             - name: MEILI_ADDR
               value: http://meilisearch:7700
             - name: BROWSER_WEB_URL
