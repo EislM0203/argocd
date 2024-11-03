@@ -1,0 +1,17 @@
+cronjob:
+  # -- Schedules the job to run using cron notation
+  schedule: '0 1 * * *'  # At 01:00 every day
+  timeZone: 'Europe/Vienna'
+renovate:
+  config: |
+     {
+       "platform": "github",
+       "endpoint": "https://api.github.com",
+       "autodiscover": "false",
+       "dryRun": null,
+       "printConfig": true,
+       "repositories": ["EislM0203/radiology-training"]
+     }
+envFrom:
+  - secretRef:
+      name: github-token-secret

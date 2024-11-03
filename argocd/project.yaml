@@ -44,6 +44,8 @@ spec:
     server: https://kubernetes.default.svc
   - namespace: minio
     server: https://kubernetes.default.svc
+  - namespace: renovate
+    server: https://kubernetes.default.svc
   clusterResourceWhitelist:
   - group: rbac.authorization.k8s.io
     kind: ClusterRole
@@ -87,4 +89,6 @@ spec:
     kind: ScrapeConfig
   - group: monitoring.coreos.com
     kind: PrometheusAgent
+  - group: batch
+    kind: CronJob
   
