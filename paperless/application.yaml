@@ -11,7 +11,7 @@ spec:
   source:
     path: paperless/app/
     repoURL: https://github.com/EislM0203/argocd
-    targetRevision: paperless
+    targetRevision: HEAD
     kustomize: {}
   syncPolicy:
     automated:
