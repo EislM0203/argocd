@@ -32,6 +32,16 @@ data:
             href: https://navidrome.traunseenet.com/
             ping: https://navidrome.traunseenet.com/
             description: Music streaming server
+        - Note-Mark:
+            icon: md.png
+            href: https://notes.traunseenet.com/
+            ping: https://notes.traunseenet.com/
+            description: Private Knowledge Base
+        - Hoarder:
+            icon: hoarder.png
+            href: https://hoarder.traunseenet.com/
+            ping: https://hoarder.traunseenet.com/
+            description: Bookmark everything!
     - Private Services:
         - Jaeger & Opentelemetry Collector:
             icon: jaeger.png
