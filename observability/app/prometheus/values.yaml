@@ -144,12 +144,3 @@ alertmanager:
       - secretName: letsencrypt-prod-alertmanager
         hosts:
           - alertmanager.local.traunseenet.com
-    storageSpec:
-      volumeClaimTemplate:
-        spec:
-          storageClassName: longhorn-storage
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 8Gi
-        selector: {}
