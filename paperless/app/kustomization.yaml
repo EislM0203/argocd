@@ -3,7 +3,9 @@ kind: Kustomization
 namespace: paperless
 resources:
 - ingress-local.yaml
-#- pvc.yaml #only used for initial setup, restore from longhorn if lost
+- sealedsecret-redis.yaml
+- sealedsecret-postgres.yaml
+- sealedsecret-server.yaml
 helmCharts:
   - name: paperless-ngx
     repo: https://charts.gabe565.com/
