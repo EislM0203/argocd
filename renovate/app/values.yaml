@@ -10,7 +10,7 @@ renovate:
        "autodiscover": "false",
        "dryRun": null,
        "printConfig": true,
-       "repositories": ["EislM0203/radiology-training"]
+       "repositories": ["EislM0203/radiology-training", "EislM0203/argocd"]
      }
 envFrom:
   - secretRef:
