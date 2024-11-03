@@ -11,7 +11,7 @@ spec:
   source:
     path: renovate/app/
     repoURL: https://github.com/EislM0203/argocd
-    targetRevision: renovate
+    targetRevision: HEAD
     kustomize: {}
   syncPolicy:
     automated:
