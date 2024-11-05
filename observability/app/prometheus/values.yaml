@@ -144,3 +144,6 @@ alertmanager:
       - secretName: letsencrypt-prod-alertmanager
         hosts:
           - alertmanager.local.traunseenet.com
+  alertmanagerSpec:
+    useExistingSecret: true
+    configSecret: alertmanager-secret
