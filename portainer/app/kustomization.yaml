@@ -9,5 +9,5 @@ helmCharts:
     releaseName: portainer
     namespace: portainer
     valuesFile: values.yaml
-    version: 1.0.57
+    version: 1.0.58
     includeCRDs: true
