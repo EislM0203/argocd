@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: note-mark-ingress
+  name: silverbullet-ingress
   namespace: utility
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
@@ -21,6 +21,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: note-mark-service
+                name: silverbullet-service
                 port:
-                  number: 8000
+                  number: 3000

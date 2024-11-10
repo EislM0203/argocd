@@ -1,40 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: note-mark
+  name: silverbullet
   namespace: utility
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: note-mark
+      app: silverbullet
   template:
     metadata:
       labels:
-        app: note-mark
+        app: silverbullet
     spec:
       containers:
-        - name: note-mark
-          image: ghcr.io/enchant97/note-mark-aio:0.14.1
+        - name: silverbullet
+          image: zefhemel/silverbullet:0.9.4
           ports:
-            - containerPort: 8000
+            - containerPort: 3000
           env:
-            - name: JWT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: note-mark-secret
-                  key: JWT_SECRET
-            - name: CORS_ORIGINS
-              value: "https://notes.traunseenet.com"
-            - name: NOTE_SIZE_LIMIT
-              value: "10M"
-            - name: ASSET_SIZE_LIMIT
-              value: "50M"
+            - name: SB_SHELL_BACKEND
+              value: "off"
+            - name: SB_SPACE_SCRIPT
+              value: "off"
           volumeMounts:
-            - mountPath: /data
-              name: note-mark-data
+            - mountPath: /space
+              name: silverbullet-data
       volumes:
-        - name: note-mark-data
+        - name: silverbullet-data
           persistentVolumeClaim:
-            claimName: note-mark-pvc
+            claimName: silverbullet-pvc
       restartPolicy: Always

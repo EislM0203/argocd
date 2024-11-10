@@ -6,4 +6,3 @@ resources:
 - ingress.yaml
 - pvc.yaml
 - service.yaml
-- sealedsecret.yaml
