@@ -107,7 +107,6 @@ prometheus:
           resources:
             requests:
               storage: 10Gi
-        selector: {}
     #additionalScrapeConfigs: | 
     #  - job_name: 'kubernetes-pods'
     #    kubernetes_sd_configs:
