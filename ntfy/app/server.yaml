@@ -1,0 +1,7 @@
+base-url: https://notify.traunseenet.com
+cache-file: "/var/cache/ntfy/cache.db"
+attachment-cache-dir: "/var/cache/ntfy/attachments"
+ntfy-behind-proxy: true
+ntfy-enable-login: false
+auth-file: "/var/lib/ntfy/user.db"
+auth-default-access: "deny-all"

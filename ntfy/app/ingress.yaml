@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ntfy
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/router.middlewares: ntfy-ntfy-auth@kubernetescrd
+spec:
+  tls:
+    - hosts:
+        - notify.traunseenet.com
+      secretName: letsencrypt-prod-ntfy
+  ingressClassName: traefik
+  rules:
+    - host: notify.traunseenet.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ntfy
+                port:
+                  number: 80
