@@ -31,8 +31,6 @@ immich:
 postgresql:
   volumePermissions:
     enabled: true
-  readReplicas:
-    resourcesPreset: "large"
   enabled: true
   image:
     repository: tensorchord/pgvecto-rs
@@ -44,6 +42,10 @@ postgresql:
         database: immich
         password: immich
   primary:
+    resources:
+      requests:
+        cpu: 1m
+        memory: 1M
     persistance:
       enabled: true
       existingClaim: data-immich-postgresql-0
@@ -58,6 +60,10 @@ redis:
   volumePermissions:
     enabled: true
   master:
+    resources:
+      requests:
+        cpu: 1m
+        memory: 1M
     persistance:
       enabled: true
       existingClaim: redis-data-immich-redis-master-0
