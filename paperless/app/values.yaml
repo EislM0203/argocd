@@ -125,6 +125,8 @@ redis:
     # existingSecret: paperless-redis
     # existingSecretPasswordKey: redis-password
   master:
+    nodeSelector:
+        architecture: arm
     persistence:
       enabled: false
   replica:

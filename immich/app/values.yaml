@@ -60,6 +60,8 @@ redis:
   volumePermissions:
     enabled: true
   master:
+    nodeSelector:
+      architecture: arm
     resources:
       requests:
         cpu: 1m
