@@ -1,7 +1,7 @@
 updateStrategy:
   type: Recreate
 existingSecretAdminPassword: harbor-secret
-externalURL: https://harbor.traunseenet.com
+externalURL: https://harbor-prod.traunseenet.com
 expose:
   tls:
     enabled: true
@@ -11,7 +11,7 @@ expose:
   ingress:
     ingressClassName: traefik
     hosts: 
-      core: harbor.traunseenet.com
+      core: harbor-prod.traunseenet.com
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
@@ -75,10 +75,10 @@ database:
           - /bin/sh
           - -ec
           - |
-            chown 10000:10000 /temp
+            chown 999:10000 /temp
             chmod 770 /temp
             find /temp -mindepth 1 -maxdepth 1 -not -name "conf" -not -name ".snapshot" -not -name "lost+found" | \
-              xargs -r chown -R 10000:10000
+              xargs -r chown -R 999:10000
           # - sleep 8400
         securityContext:
           runAsGroup: 0
