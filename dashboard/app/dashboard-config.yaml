@@ -57,6 +57,21 @@ data:
             href: https://usememos.traunseenet.com/
             ping: https://usememos.traunseenet.com/
             description: A self-hosted tool for managing to-do lists and notes, ensuring productivity.
+        - Ntfy:
+            icon: ntfy.png
+            href: https://notify.traunseenet.com/
+            ping: https://notify.traunseenet.com/
+            description: Easy HTTP push-notifications.   
+        - Open-WebUI:
+            icon: openwebui.png
+            href: https://gpt.traunseenet.com/
+            ping: https://gpt.traunseenet.com/
+            description: Self-hosted LLMs
+        - IT-Tools:
+            icon: it.png
+            href: https://tools.traunseenet.com/
+            ping: https://tools.traunseenet.com/
+            description: All purpose dev tools
     - Private Services:
         - Alertmanager:
             icon: jaeger.png
@@ -73,6 +88,21 @@ data:
             href: https://jaeger.local.traunseenet.com/
             ping: https://jaeger.local.traunseenet.com/
             description: Tools for tracing and collecting observability data for distributed systems.
+        - Grafana:
+            icon: jaeger.png
+            href: https://grafana.local.traunseenet.com/
+            ping: https://grafana.local.traunseenet.com/
+            description: Grafana dashbaords
+        - Prometheus:
+            icon: jaeger.png
+            href: https://prometheus.local.traunseenet.com/
+            ping: https://prometheus.local.traunseenet.com/
+            description: Prometheus metric scraper
+        - Alertmanager:
+            icon: jaeger.png
+            href: https://alertmanager.local.traunseenet.com/
+            ping: https://alertmanager.local.traunseenet.com/
+            description: Manage observability alerts
         - Jellyfin:
             icon: jellyfin.png
             href: https://jellyfin.local.traunseenet.com
