@@ -35,6 +35,9 @@ ports:
     exposedPort: 443
     tls:
       enabled: true
+    transport:
+      respondingTimeouts:
+        readTimeout: 360
 tracing:
   otlp:
     enabled: false
