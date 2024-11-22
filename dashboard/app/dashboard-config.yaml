@@ -136,12 +136,10 @@ data:
     # For configuration options and examples, please see:
     # https://github.com/benphelps/homepage/wiki/Docker-Integration
 
-    # my-docker:
-    #   host: 127.0.0.1
-    #   port: 2375
-
-    # my-docker:
-    #   socket: /var/run/docker.sock
+    rpi-docker:
+      host: 10.0.0.179
+      port: 2375
+      
 kind: ConfigMap
 metadata:
   name: dashboard-homepage-docker
