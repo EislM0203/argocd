@@ -6,114 +6,113 @@ data:
             icon: kubernetes.png
             href: https://homepage.traunseenet.com/
             ping: https://homepage.traunseenet.com/
-            description: My self-made portfolio website
+            description: A showcase of my personal and professional projects, built and maintained by me.
         - Headscale:
             icon: tailscale.png
             href: https://headscale.traunseenet.com/
             ping: https://headscale.traunseenet.com/
-            description: Self-hosted version of the tailscale coordination server
-        - Immich:
-            icon: immich.png
-            href: https://immich.traunseenet.com/
-            ping: https://immich.traunseenet.com/
-            description: Photo and Video store
-        - Keycloak:
-            icon: keycloak.png
-            href: https://keycloak-prod.traunseenet.com/
-            ping: https://keycloak-prod.traunseenet.com/
-            description: Authentication mechanism for most services in the cluster
-        - Usememos:
-            icon: todo.png
-            href: https://usememos.traunseenet.com/
-            ping: https://usememos.traunseenet.com/
-            description: Keeping ToDos & Notes up to date
-        - Navidrome:
-            icon: navidrome.png
-            href: https://navidrome.traunseenet.com/
-            ping: https://navidrome.traunseenet.com/
-            description: Music streaming server
-        - Silvebullet:
-            icon: silverbullet.png
-            href: https://notes.traunseenet.com/
-            ping: https://notes.traunseenet.com/
-            description: Private Knowledge Base
+            description: A self-hosted implementation of the Tailscale coordination server for secure networking.
         - Hoarder:
             icon: hoarder.png
             href: https://hoarder.traunseenet.com/
             ping: https://hoarder.traunseenet.com/
-            description: Bookmark everything!
-        - Ntfy:
-            icon: ntfy.png
-            href: https://notify.traunseenet.com/
-            ping: https://notify.traunseenet.com/
-            description: Easy HTTP push-notifications.   
-        - Open-WebUI:
-            icon: openwebui.png
-            href: https://gpt.traunseenet.com/
-            ping: https://gpt.traunseenet.com/
-            description: Self-hosted LLMs
+            description: A tool to organize, manage, and revisit all your bookmarks effortlessly.
+        - Immich:
+            icon: immich.png
+            href: https://immich.traunseenet.com/
+            ping: https://immich.traunseenet.com/
+            description: A platform to securely store and share photos and videos, tailored for personal use.
         - IT-Tools:
             icon: it.png
             href: https://tools.traunseenet.com/
             ping: https://tools.traunseenet.com/
-            description: All purpose dev tools
+            description: A collection of developer tools for various tasks, from debugging to encoding.
+        - Keycloak:
+            icon: keycloak.png
+            href: https://keycloak-prod.traunseenet.com/
+            ping: https://keycloak-prod.traunseenet.com/
+            description: A robust identity and access management solution for centralizing authentication.
+        - Navidrome:
+            icon: navidrome.png
+            href: https://navidrome.traunseenet.com/
+            ping: https://navidrome.traunseenet.com/
+            description: A modern, self-hosted music streaming server with a user-friendly interface.
+        - Ntfy:
+            icon: ntfy.png
+            href: https://notify.traunseenet.com/
+            ping: https://notify.traunseenet.com/
+            description: A lightweight and self-hosted HTTP push notification service for your projects.
+        - Open-WebUI:
+            icon: openwebui.png
+            href: https://gpt.traunseenet.com/
+            ping: https://gpt.traunseenet.com/
+            description: A platform for hosting and accessing large language models for custom AI solutions.
+        - Silvebullet:
+            icon: silverbullet.png
+            href: https://notes.traunseenet.com/
+            ping: https://notes.traunseenet.com/
+            description: A private knowledge management system for organizing notes, ideas, and tasks.
+        - Usememos:
+            icon: todo.png
+            href: https://usememos.traunseenet.com/
+            ping: https://usememos.traunseenet.com/
+            description: A self-hosted tool for managing to-do lists and notes, ensuring productivity.
     - Private Services:
-        - Jaeger & Opentelemetry Collector:
-            icon: jaeger.png
-            href: https://jaeger.local.traunseenet.com/
-            ping: https://jaeger.local.traunseenet.com/
-            description: Observability Backends
-        - Grafana:
-            icon: jaeger.png
-            href: https://grafana.local.traunseenet.com/
-            ping: https://grafana.local.traunseenet.com/
-            description: Grafana dashbaords
-        - Prometheus:
-            icon: jaeger.png
-            href: https://prometheus.local.traunseenet.com/
-            ping: https://prometheus.local.traunseenet.com/
-            description: Prometheus metric scraper
         - Alertmanager:
             icon: jaeger.png
             href: https://alertmanager.local.traunseenet.com/
             ping: https://alertmanager.local.traunseenet.com/
-            description: Manage observability alerts
+            description: A tool to handle observability alerts, enabling efficient system monitoring.
+        - Grafana:
+            icon: jaeger.png
+            href: https://grafana.local.traunseenet.com/
+            ping: https://grafana.local.traunseenet.com/
+            description: A powerful platform for creating and sharing rich, interactive dashboards.
+        - Jaeger & Opentelemetry Collector:
+            icon: jaeger.png
+            href: https://jaeger.local.traunseenet.com/
+            ping: https://jaeger.local.traunseenet.com/
+            description: Tools for tracing and collecting observability data for distributed systems.
         - Jellyfin:
             icon: jellyfin.png
             href: https://jellyfin.local.traunseenet.com
             ping: https://jellyfin.local.traunseenet.com
-            description: Personal media streaming server
+            description: A self-hosted media server for streaming personal movie, TV, and music collections.
         - Longhorn:
             icon: longhorn.png
             href: https://longhorn.local.traunseenet.com
             ping: https://longhorn.local.traunseenet.com
-            description: Volume & backup manager
+            description: A distributed block storage system for Kubernetes, ensuring data reliability.
         - MinIO:
             icon: minio.png
             href: https://s3.local.traunseenet.com
             ping: https://s3.local.traunseenet.com
-            description: Self-hosted S3 bucket for backups
+            description: A self-hosted Amazon S3-compatible object storage solution for managing backups.
         - Paperless-ngx:
             icon: paperless.png
             href: https://paperless.local.traunseenet.com
             ping: https://paperless.local.traunseenet.com
-            description: Organize and index your scanned documents
+            description: An application for organizing, indexing, and securely storing scanned documents.
         - Portainer:
             icon: portainer.png
             href: https://portainer.local.traunseenet.com
             ping: https://portainer.local.traunseenet.com
-            description: Manage docker containers & cluster
+            description: A user-friendly management interface for Docker containers and Kubernetes clusters.
+        - Prometheus:
+            icon: jaeger.png
+            href: https://prometheus.local.traunseenet.com/
+            ping: https://prometheus.local.traunseenet.com/
+            description: A robust system for scraping and storing time-series metrics from services.
         - Seafile:
             icon: seafile.png
             href: https://seafile.local.traunseenet.com
             ping: https://seafile.local.traunseenet.com
-            description: Traditional file storage/sharing/syncing
+            description: A private file storage, sharing, and syncing platform with a clean interface.
         - Traefik:
             icon: traefik.png
             href: https://traefik-dashboard.local.traunseenet.com
             ping: https://traefik-dashboard.local.traunseenet.com
-            description: Ingress & Reverse Proxy for all services
-
+            description: An ingress and reverse proxy tool for routing and load balancing all services.
 kind: ConfigMap
 metadata:
   name: dashboard-homepage-services
