@@ -10,7 +10,7 @@ renovate:
        "autodiscover": "false",
        "dryRun": null,
        "printConfig": true,
-       "dependencyDashboard": true
+       "dependencyDashboard": true,
        "repositories": ["EislM0203/argocd", "EislM0203/go-projects"]
        "regexManagers": [
          {
