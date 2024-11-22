@@ -32,8 +32,8 @@ data:
             href: https://navidrome.traunseenet.com/
             ping: https://navidrome.traunseenet.com/
             description: Music streaming server
-        - Note-Mark:
-            icon: md.png
+        - Silvebullet:
+            icon: silverbullet.png
             href: https://notes.traunseenet.com/
             ping: https://notes.traunseenet.com/
             description: Private Knowledge Base
@@ -42,12 +42,42 @@ data:
             href: https://hoarder.traunseenet.com/
             ping: https://hoarder.traunseenet.com/
             description: Bookmark everything!
+        - Ntfy:
+            icon: ntfy.png
+            href: https://notify.traunseenet.com/
+            ping: https://notify.traunseenet.com/
+            description: Easy HTTP push-notifications.   
+        - Open-WebUI:
+            icon: openwebui.png
+            href: https://gpt.traunseenet.com/
+            ping: https://gpt.traunseenet.com/
+            description: Self-hosted LLMs
+        - IT-Tools:
+            icon: it.png
+            href: https://tools.traunseenet.com/
+            ping: https://tools.traunseenet.com/
+            description: All purpose dev tools
     - Private Services:
         - Jaeger & Opentelemetry Collector:
             icon: jaeger.png
             href: https://jaeger.local.traunseenet.com/
             ping: https://jaeger.local.traunseenet.com/
             description: Observability Backends
+        - Grafana:
+            icon: jaeger.png
+            href: https://grafana.local.traunseenet.com/
+            ping: https://grafana.local.traunseenet.com/
+            description: Grafana dashbaords
+        - Prometheus:
+            icon: jaeger.png
+            href: https://prometheus.local.traunseenet.com/
+            ping: https://prometheus.local.traunseenet.com/
+            description: Prometheus metric scraper
+        - Alertmanager:
+            icon: jaeger.png
+            href: https://alertmanager.local.traunseenet.com/
+            ping: https://alertmanager.local.traunseenet.com/
+            description: Manage observability alerts
         - Jellyfin:
             icon: jellyfin.png
             href: https://jellyfin.local.traunseenet.com
@@ -73,16 +103,6 @@ data:
             href: https://portainer.local.traunseenet.com
             ping: https://portainer.local.traunseenet.com
             description: Manage docker containers & cluster
-        - Container Registry:
-            icon: docker.png
-            href: https://registry.local.traunseenet.com
-            ping: https://registry-api.local.traunseenet.com
-            description: Self-hosted container registry
-        - Container Registry UI:
-            icon: docker.png
-            href: https://registry.local.traunseenet.com
-            ping: https://registry.local.traunseenet.com
-            description: UI for the container registry
         - Seafile:
             icon: seafile.png
             href: https://seafile.local.traunseenet.com
@@ -139,7 +159,7 @@ data:
     rpi-docker:
       host: 10.0.0.179
       port: 2375
-      
+
 kind: ConfigMap
 metadata:
   name: dashboard-homepage-docker
