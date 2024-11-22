@@ -75,10 +75,10 @@ database:
           - /bin/sh
           - -ec
           - |
-            chown 999:999 /temp
-            chmod 700 /temp
+            chown 10000:10000 /temp
+            chmod 770 /temp
             find /temp -mindepth 1 -maxdepth 1 -not -name "conf" -not -name ".snapshot" -not -name "lost+found" | \
-              xargs -r chown -R 999:999
+              xargs -r chown -R 10000:10000
           # - sleep 8400
         securityContext:
           runAsGroup: 0
