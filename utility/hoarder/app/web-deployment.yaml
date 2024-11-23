@@ -23,7 +23,7 @@ spec:
             - name: OLLAMA_KEEP_ALIVE
               value: "5m"
             - name: INFERENCE_JOB_TIMEOUT_SEC
-              value: 600
+              value: "600"
             - name: CRAWLER_FULL_PAGE_ARCHIVE
               value: "true"
             - name: DISABLE_PASSWORD_AUTH
