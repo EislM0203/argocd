@@ -12,17 +12,3 @@ spec:
     requests:
       storage: 20Gi
 status: {}
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: open-webui-llm-longhorn
-  annotations:
-    numberOfReplicas: '2'
-spec:
-  accessModes: ["ReadWriteMany"]
-  storageClassName: longhorn-storage
-  resources:
-    requests:
-      storage: 20Gi
-status: {}
