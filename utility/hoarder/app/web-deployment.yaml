@@ -40,11 +40,11 @@ spec:
             - name: OAUTH_PROVIDER_NAME
               value: Keycloak
             - name: OLLAMA_BASE_URL
-              value: http://open-webui-ollama.open-webui.svc.cluster.local:11434
+              value: http://10.0.0.225:11434
             - name: INFERENCE_TEXT_MODEL
-              value: tinydolphin:latest
+              value: llama3.1:8b
             - name: INFERENCE_IMAGE_MODEL
-              value: moondream:1.8b
+              value: llava:7b
             - name: MEILI_ADDR
               value: http://meilisearch:7700
             - name: BROWSER_WEB_URL
