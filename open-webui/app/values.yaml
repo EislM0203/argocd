@@ -59,10 +59,6 @@ persistence:
   selector: {}
   annotations: {}
 
-# -- Node labels for pod assignment.
-nodeSelector:
-  architecture: x86
-
 # -- Tolerations for pod assignment
 tolerations: []
 
