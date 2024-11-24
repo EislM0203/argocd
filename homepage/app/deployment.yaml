@@ -14,9 +14,11 @@ spec:
       labels:
         app.kubernetes.io/name: homepage
     spec:
+      imagePullSecrets:
+        - name: homepage-pull-secret
       containers:
         - name: homepage
-          image: markuseisl00/homepage
+          image: harbor-prod.traunseenet.com/traunseenet/portfolio:latest
           imagePullPolicy: Always
           ports:
             - name: web
