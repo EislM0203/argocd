@@ -9,5 +9,5 @@ helmCharts:
     releaseName: grafana
     namespace: observability
     valuesFile: values.yaml
-    version: 8.6.1
+    version: 8.6.3
     includeCRDs: true
