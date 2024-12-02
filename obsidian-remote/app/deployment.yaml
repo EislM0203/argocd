@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: obsidian-remote
+  labels:
+    app: obsidian-remote
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: obsidian-remote
+  template:
+    metadata:
+      labels:
+        app: obsidian-remote
+    spec:
+      imagePullSecrets:
+        - name: obsidian-remote-pull-secret
+      containers:
+      - name: obsidian-remote
+        image: harbor-prod.traunseenet.com/traunseenet/obsidian-remote:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: TZ
+          value: "Europe/Vienna"
+        - name: KEYBOARD
+          value: "de-de-qwertz"
+        - name: TITLE
+          value: "Obsidian Remote"
+        - name: CUSTOM_PORT
+          value: "8080"
+        volumeMounts:
+        - name: syncthing-storage
+          mountPath: /vaults
+          subPath: SyncedNotes
+        - name: obsidian-config
+          mountPath: /config
+      volumes:
+      - name: syncthing-storage
+        persistentVolumeClaim:
+          claimName: syncthing-pvc
+      - name: obsidian-config
+        persistentVolumeClaim:
+          claimName: obsidian-config-pvc

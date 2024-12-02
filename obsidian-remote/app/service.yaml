@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: obsidian-remote
+spec:
+  type: ClusterIP
+  selector:
+    app: obsidian-remote
+  ports:
+    - port: 8080
+      name: web
+      targetPort: 8080

@@ -13,19 +13,4 @@ spec:
       storage: 10Gi
   storageClassName: longhorn-storage
 status: {}
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: database-data
-  annotations:
-    numberOfReplicas: '3'
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: longhorn-storage
-status: {}
 
