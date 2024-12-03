@@ -46,9 +46,9 @@ spec:
             - name: OLLAMA_BASE_URL
               value: http://10.0.0.225:11434
             - name: INFERENCE_TEXT_MODEL
-              value: phi3.5:3.8b
+              value: llama3.2:1b-instruct-q4_K_M
             - name: INFERENCE_IMAGE_MODEL
-              value: llava-phi3:3.8b
+              value: moondream:1.8b-v2-q4_K_M
             - name: MEILI_ADDR
               value: http://meilisearch:7700
             - name: BROWSER_WEB_URL
