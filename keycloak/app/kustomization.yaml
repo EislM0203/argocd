@@ -10,4 +10,4 @@ helmCharts:
     namespace: keycloak
     valuesFile: values.yaml
     includeCRDs: true
-    version: 24.0.1
+    version: 24.3.1
