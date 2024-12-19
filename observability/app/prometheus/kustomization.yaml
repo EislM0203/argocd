@@ -9,5 +9,5 @@ helmCharts:
     releaseName: kube-prometheus-stack
     namespace: observability
     valuesFile: values.yaml
-    version: 66.3.0
+    version: 67.3.1
     includeCRDs: true
