@@ -11,4 +11,4 @@ helmCharts:
     releaseName: open-webui
     namespace: open-webui
     valuesFile: values.yaml
-    version: 4.0.4
+    version: 5.0.0
