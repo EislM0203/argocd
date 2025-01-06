@@ -21,7 +21,7 @@ ollama:
 
 pipelines:
   # -- Automatically install Pipelines chart to extend Open WebUI functionality using Pipelines: https://github.com/open-webui/pipelines
-  enabled: false
+  enabled: true
   # -- This section can be used to pass required environment variables to your pipelines (e.g. Langfuse hostname)
   extraEnvVars: []
 
@@ -97,7 +97,7 @@ extraEnvVars:
   - name: OAUTH_SCOPES
     value: "openid email profile"
   - name: OLLAMA_BASE_URL
-    value: "http://10.0.0.225:11434"
+    value: "http://100.64.0.4:11434"
   # valueFrom:
   #   secretKeyRef:
   #     name: pipelines-api-key
