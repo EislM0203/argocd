@@ -7,4 +7,5 @@ helmCharts:
     releaseName: traefik
     namespace: traefik
     valuesFile: values.yaml
+    version: 33.2.1
     includeCRDs: true
