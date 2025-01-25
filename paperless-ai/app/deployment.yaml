@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless-ai-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless-ai
+  template:
+    metadata:
+      labels:
+        app: paperless-ai
+    spec:
+      containers:
+        - name: paperless-ai
+          image: clusterzx/paperless-ai
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - mountPath: /app/data
+              name: paperless-ai-data-volume
+      volumes:
+        - name: paperless-ai-data-volume
+          persistentVolumeClaim:
+            claimName: paperless-ai-pvc

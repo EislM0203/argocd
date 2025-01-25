@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: paperless-ai
+  namespace: argocd
+spec:
+  destination:
+    namespace: paperless-ai
+    server: https://kubernetes.default.svc
+  project: traunseenet
+  source:
+    path: paperless-ai/app/
+    repoURL: https://github.com/EislM0203/argocd
+    targetRevision: HEAD
+    kustomize: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
