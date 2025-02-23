@@ -109,7 +109,8 @@ rbac:
 service:
   enabled: true
   type: LoadBalancer
-  annotations: {}
+  annotations: 
+    argocd.argoproj.io/ignore-healthcheck: "true" 
   labels: {}
   spec:
     externalTrafficPolicy: Local
