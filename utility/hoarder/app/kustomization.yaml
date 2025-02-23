@@ -8,7 +8,7 @@ resources:
 - chrome-service.yaml
 - meilisearch-deployment.yaml
 - meilisearch-service.yaml
-- meilisearch-pvc.yaml
-- data-pvc.yaml
-- sealedsecret.yaml
+#- meilisearch-pvc.yaml
+#- data-pvc.yaml
+- secret.yaml
 - ingress.yaml

@@ -5,15 +5,15 @@ metadata:
   name: hoarder
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    #traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    argocd.argoproj.io/ignore-healthcheck: "true"
 spec:
   tls:
     - hosts:
-        - hoarder.traunseenet.com
+        - hoarder.cloud.traunseenet.com
       secretName: letsencrypt-prod-hoarder
   rules:
-    - host: hoarder.traunseenet.com
+    - host: hoarder.cloud.traunseenet.com
       http:
         paths:
           - path: /
