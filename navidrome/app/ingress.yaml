@@ -7,13 +7,14 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    argocd.argoproj.io/ignore-healthcheck: "true"
 spec:
   tls:
     - hosts:
-        - navidrome.traunseenet.com
+        - navidrome.cloud.traunseenet.com
       secretName: letsencrypt-prod
   rules:
-    - host: navidrome.traunseenet.com
+    - host: navidrome.cloud.traunseenet.com
       http:
         paths:
           - path: /
