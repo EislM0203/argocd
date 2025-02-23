@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: longhorn
 resources:
 - storage-classes.yaml
-- sealedsecret.yaml
+- secret.yaml
 - ingress-local.yaml
 helmCharts:
   - name: longhorn
