@@ -1,0 +1,22 @@
+server:
+  dataStorage:
+    enabled: false
+  # auto unseal
+  postStart:
+  - /bin/sh
+  - -c
+  - sleep 10; vault operator unseal $VAULT_AUTO_UNSEAL_KEY
+  extraSecretEnvironmentVars:
+    - envName: VAULT_AUTO_UNSEAL_KEY
+      secretName: vault-token
+      secretKey: VAULT_AUTO_UNSEAL_KEY
+
+  volumes:
+    - name: &data-pvc vault-data
+      persistentVolumeClaim:
+        claimName: hashicorp-vault-data
+  volumeMounts:
+    - name: *data-pvc
+      mountPath: "/vault/data"
+injector:
+  enabled: true
