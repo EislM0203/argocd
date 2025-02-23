@@ -37,7 +37,7 @@ replicaCount: 1
 # -- Open WebUI image tags can be found here: https://github.com/open-webui/open-webui/pkgs/container/open-webui
 image:
   repository: ghcr.io/open-webui/open-webui
-  tag: "v0.4.8"
+  tag: "v0.5.7"
   pullPolicy: "IfNotPresent"
 resources: {}
 ingress:
@@ -91,7 +91,7 @@ extraEnvVars:
         name: openwebui-oauth-secret
         key: client-secret
   - name: OPENID_PROVIDER_URL
-    value: "https://keycloak-prod.traunseenet.com/realms/master/.well-known/openid-configuration"
+    value: "https://keycloak.cloud.traunseenet.com/realms/master/.well-known/openid-configuration"
   - name: OAUTH_PROVIDER_NAME
     value: "Keycloak"
   - name: OAUTH_SCOPES

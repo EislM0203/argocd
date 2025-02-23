@@ -3,12 +3,12 @@ kind: Kustomization
 namespace: open-webui
 resources:
 - ingress.yaml
-- pvc.yaml
-- sealedsecret.yaml
+#- pvc.yaml
+- secret.yaml
 helmCharts:
   - name: open-webui
     repo: https://helm.openwebui.com/
     releaseName: open-webui
     namespace: open-webui
     valuesFile: values.yaml
-    version: 5.1.1
+    version: 5.4.0

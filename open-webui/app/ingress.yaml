@@ -9,11 +9,11 @@ metadata:
 spec:
   tls:
     - hosts:
-        - gpt.traunseenet.com
+        - gpt.cloud.traunseenet.com
       secretName: letsencrypt-prod-gpt
   ingressClassName: traefik
   rules:
-    - host: gpt.traunseenet.com
+    - host: gpt.cloud.traunseenet.com
       http:
         paths:
           - backend:
