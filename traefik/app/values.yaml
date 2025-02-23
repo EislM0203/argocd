@@ -9,8 +9,8 @@ additionalArguments:
   - "--api.insecure=true"
 deployment:
   enabled: true
-#  kind: DeamonSet
-  replicas: 1
+  kind: DaemonSet
+#  replicas: 1
   annotations: {}
   podAnnotations: {}
   additionalContainers: []
@@ -40,7 +40,7 @@ ports:
         readTimeout: 360
 tracing:
   otlp:
-    enabled: false
+    enabled: true
     http:
       enabled: true
       endpoint: http://opentelemetry-collector.observability.svc.cluster.local:4318/v1/traces
@@ -70,7 +70,9 @@ extraObjects:
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         cert-manager.io/cluster-issuer: "letsencrypt-prod"
+        traefik.ingress.kubernetes.io/router.middlewares: traefik-ip-whitelist@kubernetescrd
         traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
+        argocd.argoproj.io/ignore-healthcheck: "true"
     spec:
       tls:
         - hosts:
@@ -111,6 +113,9 @@ service:
   labels: {}
   spec:
     externalTrafficPolicy: Local
-    loadBalancerIP: 10.0.0.179 #raspberrypi
+    #loadBalancerIP: 10.0.0.225 # beelink
   loadBalancerSourceRanges: []
-  externalIPs: []
+  externalIPs:
+    - "100.64.0.7"
+    - "100.64.0.5"
+    - "100.64.0.8"

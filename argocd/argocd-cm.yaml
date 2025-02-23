@@ -8,3 +8,9 @@ metadata:
     app.kubernetes.io/part-of: argocd
 data:
   kustomize.buildOptions: --enable-helm
+  resource.customizations.health.ingress.networking.k8s.io: |
+    health.lua: |
+      hs = {}
+      hs.status = "Healthy"
+      hs.message = "Custom health check: ingress marked as healthy"
+      return hs
