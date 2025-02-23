@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: traefik
 resources:
   - deployment.yaml
-  - sealedsecret.yaml
+  - secret.yaml
   - middleware.yaml
   - ingress.yaml
   - service.yaml

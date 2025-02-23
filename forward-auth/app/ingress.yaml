@@ -6,12 +6,13 @@ metadata:
   labels:
     kubernetes.io/ingress.class: traefik
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod-backup"
+    argocd.argoproj.io/ignore-healthcheck: "true"
     traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
 spec:
   ingressClassName: traefik
   rules:
-    - host: traefik-forward-auth.traunseenet.com
+    - host: traefik-forward-auth.cloud.traunseenet.com
       http:
         paths:
           - path: /
@@ -23,5 +24,5 @@ spec:
                   number: 4181
   tls:
   - hosts:
-      - traefik-forward-auth.traunseenet.com
-    secretName: letsencrypt-prod
+      - traefik-forward-auth.cloud.traunseenet.com
+    secretName: letsencrypt-prod-backup
