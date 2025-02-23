@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: homelab-secrets
+---
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  name: observability-secrets
+spec:
+  method: kubernetes
+  mount: homelab
+  kubernetes:
+    role: homelab-secrets
+    serviceAccount: homelab-secrets
+    audiences:
+      - vault

@@ -79,6 +79,8 @@ prometheus:
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      argocd.argoproj.io/ignore-healthcheck: "true"
+      traefik.ingress.kubernetes.io/router.middlewares: traefik-ip-whitelist@kubernetescrd
       traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
     tls:
       - secretName: letsencrypt-prod-prometheus
@@ -124,7 +126,7 @@ prometheus:
     #        action: keep
     #        regex: true
   service:
-    type: "LoadBalancer"
+    type: "ClusterIP"
 grafana:
   enabled: false
   forceDeployDashboards: true
@@ -138,6 +140,8 @@ alertmanager:
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      argocd.argoproj.io/ignore-healthcheck: "true"
+      traefik.ingress.kubernetes.io/router.middlewares: traefik-ip-whitelist@kubernetescrd
       traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
     tls:
       - secretName: letsencrypt-prod-alertmanager
