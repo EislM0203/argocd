@@ -4,22 +4,23 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-  name: minio-ingress
+    argocd.argoproj.io/ignore-healthcheck: "true"
+  name: minio-api-ingress
   namespace: minio
 spec:
   tls:
     - hosts:
-        - s3.local.traunseenet.com
-      secretName: letsencrypt-prod
+        - api.s3.cloud.traunseenet.com
+      secretName: letsencrypt
   ingressClassName: traefik
   rules:
-    - host: s3.local.traunseenet.com
+    - host: api.s3.cloud.traunseenet.com
       http:
         paths:
           - backend:
               service:
                 name: minio-service
                 port:
-                  number: 9001
+                  number: 9000
             path: /
             pathType: Prefix

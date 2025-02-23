@@ -3,17 +3,18 @@ kind: Ingress
 metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod-backup"
+    argocd.argoproj.io/ignore-healthcheck: "true"
   name: minio-ingress
   namespace: minio
 spec:
   tls:
     - hosts:
-        - s3.traunseenet.com
+        - s3.cloud.traunseenet.com
       secretName: letsencrypt-prod
   ingressClassName: traefik
   rules:
-    - host: s3.traunseenet.com
+    - host: s3.cloud.traunseenet.com
       http:
         paths:
           - backend:

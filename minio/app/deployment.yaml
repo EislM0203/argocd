@@ -12,11 +12,9 @@ spec:
       labels:
         app: minio
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: raspberrypi
       containers:
       - name: minio
-        image: minio/minio:RELEASE.2024-07-16T23-46-41Z
+        image: minio/minio:RELEASE.2025-02-07T23-21-09Z
         args:
           - server
           - --console-address
@@ -37,15 +35,14 @@ spec:
         - containerPort: 9000
         - containerPort: 9001
         volumeMounts:
-        - name: backup
+        - name: storage
           mountPath: /data
         resources:
           limits:
             memory: "512Mi"
             cpu: "500m"
       volumes:
-      - name: backup
-        hostPath:
-          path: /backup/backups
-          type: Directory
+      - name: storage
+        persistentVolumeClaim:
+            claimName: minio-longhorn
       restartPolicy: Always
