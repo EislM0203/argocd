@@ -4,5 +4,5 @@ namespace: paperless-ai
 resources:
 - deployment.yaml
 - ingress.yaml
-- pvc.yaml
+#- pvc.yaml
 - service.yaml
