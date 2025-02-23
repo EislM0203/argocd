@@ -3,7 +3,9 @@ kind: Ingress
 metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-ip-whitelist@kubernetescrd
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    argocd.argoproj.io/ignore-healthcheck: "true"
   name: paperless-ingress
   namespace: paperless
 spec:

@@ -3,9 +3,7 @@ kind: Kustomization
 namespace: paperless
 resources:
 - ingress-local.yaml
-- sealedsecret-redis.yaml
-- sealedsecret-postgres.yaml
-- sealedsecret-server.yaml
+- secret.yaml
 helmCharts:
   - name: paperless-ngx
     repo: https://charts.gabe565.com/
@@ -13,3 +11,4 @@ helmCharts:
     namespace: paperless
     valuesFile: values.yaml
     includeCRDs: true
+    version: 0.24.1

@@ -126,7 +126,7 @@ redis:
     # existingSecretPasswordKey: redis-password
   master:
     nodeSelector:
-        architecture: arm
+        kubernetes.io/arch: arm64
     persistence:
       enabled: false
   replica:
