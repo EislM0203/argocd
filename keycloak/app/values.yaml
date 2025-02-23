@@ -11,14 +11,15 @@ auth:
 ingress:
   enabled: true
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod-backup"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    argocd.argoproj.io/ignore-healthcheck: "true"
   ingressClassName: traefik
-  hostname: keycloak-prod.traunseenet.com
+  hostname: keycloak.cloud.traunseenet.com
   tls: true
   extraTls:
   - hosts:
-    - keycloak-prod.traunseenet.com
-    secretName: letsencrypt-prod-backup
+    - keycloak.cloud.traunseenet.com
+    secretName: letsencrypt-prod
 postgresql:
   enabled: true
   primary:
