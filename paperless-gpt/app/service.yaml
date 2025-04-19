@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: obsidian-remote
+  name: paperless-gpt-service
 spec:
   type: ClusterIP
   selector:
-    app: obsidian-remote
+    app: paperless-gpt
   ports:
-    - port: 8080
-      name: web
+    - protocol: TCP
+      port: 8080
       targetPort: 8080

@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: obsidian
+  name: paperless-gpt
   namespace: argocd
 spec:
   destination:
-    namespace: syncthing
+    namespace: paperless-gpt
     server: https://kubernetes.default.svc
   project: traunseenet
   source:
-    path: obsidian-remote/app/
+    path: paperless-gpt/app/
     repoURL: https://github.com/EislM0203/argocd
     targetRevision: HEAD
     kustomize: {}

@@ -6,6 +6,8 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-ip-whitelist@kubernetescrd
+    argocd.argoproj.io/ignore-healthcheck: "true"
 spec:
   tls:
     - hosts:

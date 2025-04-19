@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless-gpt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless-gpt
+  template:
+    metadata:
+      labels:
+        app: paperless-gpt
+    spec:
+      containers:
+        - name: paperless-gpt
+          image: icereed/paperless-gpt:v0.14.4
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: paperless-gpt-config
+            - secretRef:
+                name: paperless-gpt-secrets
+          volumeMounts:
+            - name: prompts-volume
+              mountPath: /app/prompts
+      volumes:
+        - name: prompts-volume
+          persistentVolumeClaim:
+            claimName: paperless-gpt-prompts-pvc
+

@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: paperless-gpt-config
+data:
+  PAPERLESS_BASE_URL: "http://paperless-ngx:8000"
+  PAPERLESS_PUBLIC_URL: "https://paperless.local.traunseenet.com"
+  MANUAL_TAG: "gpt-manual"
+  AUTO_TAG: "gpt-auto"
+  LLM_PROVIDER: "ollama"
+  LLM_MODEL: "hf.co/unsloth/gemma-3-4b-it-GGUF:Q4_K_M"
+  TOKEN_LIMIT: "16000"
+  LLM_LANGUAGE: "German"
+  OCR_PROVIDER: "llm"
+  VISION_LLM_PROVIDER: "ollama"
+  VISION_LLM_MODEL: "hf.co/unsloth/gemma-3-4b-it-GGUF:Q4_K_M"
+  #OPENAI_BASE_URL: "http://100.64.0.4:8888/v1"
+  #OPENAI_API_KEY: "nothingtoseehere"
+  OLLAMA_HOST: "http://100.64.0.4:11434"
+  AUTO_OCR_TAG: "gpt-ocr-auto"
+  OCR_LIMIT_PAGES: "5"
+  LOG_LEVEL: "info"

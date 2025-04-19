@@ -6,14 +6,15 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
+    argocd.argoproj.io/ignore-healthcheck: "true"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   tls:
     - hosts:
-        - dashboard.traunseenet.com
+        - dashboard.cloud.traunseenet.com
       secretName: letsencrypt-prod
   rules:
-    - host: dashboard.traunseenet.com
+    - host: dashboard.cloud.traunseenet.com
       http:
         paths:
           - path: /

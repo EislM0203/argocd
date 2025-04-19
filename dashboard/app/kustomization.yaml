@@ -7,3 +7,4 @@ resources:
   - dashboard-deployment.yaml
   - dashboard-ingress.yaml
   - dashboard-service.yaml
+  - kubernetes-access.yaml
