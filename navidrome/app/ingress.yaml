@@ -12,7 +12,7 @@ spec:
   tls:
     - hosts:
         - navidrome.cloud.traunseenet.com
-      secretName: letsencrypt-prod
+      secretName: letsencrypt-prod-navidrome	
   rules:
     - host: navidrome.cloud.traunseenet.com
       http:

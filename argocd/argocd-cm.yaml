@@ -8,6 +8,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
 data:
   kustomize.buildOptions: --enable-helm
+  accounts.admin: login, apiKey
   resource.customizations.health.ingress.networking.k8s.io: |
     health.lua: |
       hs = {}

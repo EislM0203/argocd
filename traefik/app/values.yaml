@@ -89,7 +89,7 @@ extraObjects:
                   service:
                     name: traefik-api
                     port:
-                      name: traefik
+                      number: 8080
 
 ingressRoute:
   dashboard:
