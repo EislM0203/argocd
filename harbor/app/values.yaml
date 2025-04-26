@@ -1,7 +1,7 @@
 updateStrategy:
   type: Recreate
 existingSecretAdminPassword: harbor-secret
-externalURL: https://harbor-prod.traunseenet.com
+externalURL: https://harbor.cloud.traunseenet.com
 expose:
   tls:
     enabled: true
@@ -11,10 +11,11 @@ expose:
   ingress:
     ingressClassName: traefik
     hosts: 
-      core: harbor-prod.traunseenet.com
+      core: harbor.cloud.traunseenet.com
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      argocd.argoproj.io/ignore-healthcheck: "true"
 persistence:
   enabled: true
   resourcePolicy: ""
