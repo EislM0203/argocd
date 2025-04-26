@@ -4,6 +4,8 @@ ingress:
   annotations: 
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    argocd.argoproj.io/ignore-healthcheck: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-ip-whitelist@kubernetescrd
   hosts:
     - host: portainer.local.traunseenet.com
       paths:
