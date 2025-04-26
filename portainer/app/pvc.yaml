@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: portainer-longhorn
   annotations:
-    numberOfReplicas: '2'
+    numberOfReplicas: '3'
 spec:
   accessModes:
     - ReadWriteMany
