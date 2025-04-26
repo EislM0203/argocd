@@ -27,7 +27,7 @@ spec:
               memory: 1M
             limits:
               cpu: 500m
-              memory: 200M
+              memory: 500M
           livenessProbe:
             httpGet:
               path: /
@@ -57,21 +57,39 @@ spec:
       serviceAccountName: homepage
       volumes:
         - name: dashboard-homepage-services
-          configMap:
-            name: dashboard-homepage-services
+          secret:
+            secretName: dashboard-config
+            items:
+              - key: services
+                path: services.yaml
         - name: dashboard-homepage-bookmarks
-          configMap:
-            name: dashboard-homepage-bookmarks
+          secret:
+            secretName: dashboard-config
+            items:
+              - key: bookmarks
+                path: bookmarks.yaml
         - name: dashboard-homepage-docker
-          configMap:
-            name: dashboard-homepage-docker
+          secret:
+            secretName: dashboard-config
+            items:
+              - key: docker
+                path: docker.yaml
         - name: dashboard-homepage-kubernetes
-          configMap:
-            name: dashboard-homepage-kubernetes
+          secret:
+            secretName: dashboard-config
+            items:
+              - key: kubernetes
+                path: kubernetes.yaml
         - name: dashboard-homepage-widgets
-          configMap:
-            name: dashboard-homepage-widgets
+          secret:
+            secretName: dashboard-config
+            items:
+              - key: widgets
+                path: widgets.yaml
         - name: dashboard-homepage-settings
-          configMap:
-            name: dashboard-homepage-settings
+          secret:
+            secretName: dashboard-config
+            items:
+              - key: settings
+                path: settings.yaml
 status: {}
