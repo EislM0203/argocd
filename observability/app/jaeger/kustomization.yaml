@@ -7,5 +7,5 @@ helmCharts:
     releaseName: jaegertracing
     namespace: observability
     valuesFile: values.yaml
-    version: 3.3.3
+    version: 3.4.1
     includeCRDs: true
