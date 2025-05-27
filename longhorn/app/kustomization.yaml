@@ -11,5 +11,5 @@ helmCharts:
     releaseName: longhorn
     namespace: longhorn
     valuesFile: values.yaml
-    version: 1.7.2
+    version: 1.9.0
     includeCRDs: true
