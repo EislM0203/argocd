@@ -44,7 +44,7 @@ spec:
             - name: OAUTH_PROVIDER_NAME
               value: Keycloak
             - name: OPENAI_BASE_URL
-              value: http://100.64.0.1:8888
+              value: http://100.64.0.1:8888/v1
             - name: INFERENCE_TEXT_MODEL
               value: google/gemma-3-12b
             - name: INFERENCE_IMAGE_MODEL
