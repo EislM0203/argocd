@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: uptimekuma
+  namespace: argocd
+spec:
+  destination:
+    namespace: uptimekuma
+    server: https://kubernetes.default.svc
+  project: traunseenet
+  source:
+    path: uptimekuma/app/
+    repoURL: https://github.com/EislM0203/argocd
+    targetRevision: HEAD
+    kustomize: {}
+  syncPolicy:
+    automated:
+      selfHeal: true
