@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scrutiny-influxdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scrutiny-influxdb
+  template:
+    metadata:
+      labels:
+        app: scrutiny-influxdb
+    spec:
+      containers:
+        - name: influxdb
+          image: influxdb:2.2
+          ports:
+            - containerPort: 8086
+          volumeMounts:
+            - name: influxdb-data
+              mountPath: /var/lib/influxdb2
+      volumes:
+        - name: influxdb-data
+          persistentVolumeClaim:
+            claimName: scrutiny-influxdb-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scrutiny-influxdb
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8086
+      targetPort: 8086
+      protocol: TCP
+      name: http
+  selector:
+    app: scrutiny-influxdb
