@@ -11,4 +11,4 @@ helmCharts:
     namespace: keycloak
     valuesFile: values.yaml
     includeCRDs: true
-    version: 24.6.7
+    version: 24.7.4
