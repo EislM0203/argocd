@@ -18,10 +18,6 @@ spec:
       labels:
         app: uptime-kuma
     spec:
-      dnsPolicy: "None"
-      dnsConfig:
-        nameservers:
-        - 100.64.0.9
       containers:
       - name: uptime-kuma
         image: louislam/uptime-kuma:1.23.16
