@@ -23,7 +23,7 @@ allInOne:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
       argocd.argoproj.io/ignore-healthcheck: "true"
-      traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
+      #traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
       traefik.ingress.kubernetes.io/router.middlewares: traefik-ip-whitelist@kubernetescrd
     labels:
       app.kubernetes.io/name: jaeger

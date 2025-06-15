@@ -81,7 +81,7 @@ prometheus:
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
       argocd.argoproj.io/ignore-healthcheck: "true"
       traefik.ingress.kubernetes.io/router.middlewares: traefik-ip-whitelist@kubernetescrd
-      traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
+      #traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
     tls:
       - secretName: letsencrypt-prod-prometheus
         hosts:
@@ -142,7 +142,7 @@ alertmanager:
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
       argocd.argoproj.io/ignore-healthcheck: "true"
       traefik.ingress.kubernetes.io/router.middlewares: traefik-ip-whitelist@kubernetescrd
-      traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
+      #traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
     tls:
       - secretName: letsencrypt-prod-alertmanager
         hosts:
