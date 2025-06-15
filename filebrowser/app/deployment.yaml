@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filebrowser
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: filebrowser
+  template:
+    metadata:
+      labels:
+        app: filebrowser
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      # initContainers:
+      #   - name: init-filebrowser-data
+      #     image: gtstef/filebrowser:latest
+      #     securityContext:
+      #       runAsUser: 0  # run as root to avoid permission issues
+      #     command:
+      #     - sh
+      #     - -c
+      #     - |
+      #       if [ ! -f /mnt/home/database.db ]; then
+      #         echo "Initializing data..."
+      #         cp -r /home/filebrowser/. /mnt/home/
+      #         chown -R 1000:1000 /mnt/home
+      #       else
+      #         echo "Data already initialized, skipping."
+      #       fi
+      #     volumeMounts:
+      #     - name: filebrowser-storage
+      #       mountPath: /mnt/home
+      securityContext:
+        runAsUser: 1000  # Adjust this if 'filebrowser' uses a different UID
+        fsGroup: 1000
+      containers:
+      - name: filebrowser
+        image: gtstef/filebrowser:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: filebrowser-storage
+          mountPath: /srv
+          subPath: data-folder
+        - name: filebrowser-storage
+          mountPath: /home/filebrowser/
+      volumes:
+      - name: filebrowser-storage
+        persistentVolumeClaim:
+          claimName: filebrowser-storage
+

@@ -1,0 +1,26 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: filebrowser
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    #traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    argocd.argoproj.io/ignore-healthcheck: "true"
+spec:
+  tls:
+    - hosts:
+        - filebrowser.cloud.traunseenet.com
+      secretName: letsencrypt-prod	
+  rules:
+    - host: filebrowser.cloud.traunseenet.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: filebrowser-service
+                port:
+                  number: 8080
