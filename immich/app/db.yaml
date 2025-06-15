@@ -10,7 +10,7 @@ spec:
       - "vectors.so"
   storage:
     storageClass: longhorn-storage
-    size: 100Gi
+    size: 20Gi
   managed:
     roles:
       - name: immich
@@ -110,7 +110,7 @@ spec:
 #       - "vectors.so"
 #   storage:
 #     storageClass: longhorn-storage
-#     size: 100Gi
+#     size: 20Gi
 #   managed:
 #     roles:
 #       - name: immich
