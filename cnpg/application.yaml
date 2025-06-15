@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: it-tools
+  name: cnpg
   namespace: argocd
 spec:
   destination:
-    namespace: utility
+    namespace: cnpg-system
     server: https://kubernetes.default.svc
   project: traunseenet
   source:
-    path: utility/it-tools/app/
+    path: cnpg/app/
     repoURL: https://github.com/EislM0203/argocd
     targetRevision: HEAD
     kustomize: {}
@@ -17,3 +17,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+    - ServerSideApply=true
