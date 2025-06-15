@@ -1,14 +1,30 @@
 ## This chart relies on the common library chart from bjw-s
 ## You can find it at https://github.com/bjw-s/helm-charts/tree/main/charts/library/common
 ## Refer there for more detail about the supported values
-
+env:
+  DB_HOSTNAME: db-immich-rw
+  DB_PORT: 5432
+  DB_DATABASE_NAME: immich
+  DB_USERNAME:
+    valueFrom:
+      secretKeyRef:
+        name: immich-postgres-user
+        key: username
+  DB_PASSWORD:
+    valueFrom:
+      secretKeyRef:
+        name: immich-postgres-user
+        key: password
+  
+  LOG_LEVEL: info
+  TZ: Europe/Vienna
 # These entries are shared between all the Immich components
 image:
-  tag: v1.116.0
+  tag: v1.134.0
 immich:
   metrics:
     # Enabling this will create the service monitors needed to monitor immich with the prometheus operator
-    enabled: false
+    enabled: true
   persistence:
     # Main data store for all photos shared between different components.
     library:
@@ -27,41 +43,14 @@ immich:
     #   template: "{{y}}/{{y}}-{{MM}}-{{dd}}/{{filename}}"
 
 # Dependencies
-
-postgresql:
-  volumePermissions:
-    enabled: true
-  enabled: true
-  image:
-    repository: tensorchord/pgvecto-rs
-    tag: pg14-v0.2.0
-  global:
-    postgresql:
-      auth:
-        username: immich
-        database: immich
-        password: immich
-  primary:
-    resources:
-      requests:
-        cpu: 1m
-        memory: 1M
-    persistance:
-      enabled: true
-      existingClaim: data-immich-postgresql-0
-    initdb:
-      scripts:
-        create-extensions.sql: |
-          CREATE EXTENSION cube;
-          CREATE EXTENSION earthdistance;
-          CREATE EXTENSION vectors;
-
+postgres:
+  enabled: false
 redis:
   volumePermissions:
     enabled: true
   master:
     nodeSelector:
-      architecture: arm
+      kubernetes.io/arch: arm64
     resources:
       requests:
         cpu: 1m
