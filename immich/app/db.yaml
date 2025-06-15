@@ -10,7 +10,7 @@ spec:
       - "vectors.so"
   storage:
     storageClass: longhorn-storage
-    size: 10Gi
+    size: 100Gi
   managed:
     roles:
       - name: immich
@@ -26,3 +26,114 @@ spec:
         - CREATE EXTENSION IF NOT EXISTS "vectors";
         - CREATE EXTENSION IF NOT EXISTS "cube" CASCADE;
         - CREATE EXTENSION IF NOT EXISTS "earthdistance" CASCADE;
+  plugins:
+  - name: barman-cloud.cloudnative-pg.io
+    isWALArchiver: true
+    parameters:
+      barmanObjectName: immich-store
+---
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: immich-store
+spec:
+  configuration:
+    destinationPath: s3://cnpg-backup/immich-backup
+    endpointURL: http://minio-service.minio.svc.cluster.local:9000
+    s3Credentials:
+      accessKeyId:
+        name: immich-postgres-user
+        key: MINIO_ACCESS_KEY
+      secretAccessKey:
+        name: immich-postgres-user
+        key: MINIO_SECRET_KEY
+    wal:
+      compression: gzip
+---
+# Single Backup
+# apiVersion: postgresql.cnpg.io/v1
+# kind: Backup
+# metadata:
+#   name: immich-backup
+# spec:
+#   cluster:
+#     name: db-immich
+#   method: plugin
+#   pluginConfiguration:
+#     name: barman-cloud.cloudnative-pg.io
+# ---
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: immich-backup-scheduled
+spec:
+  schedule: "0 0 0 * * *"
+  backupOwnerReference: self
+  cluster:
+    name: db-immich
+  method: plugin
+  pluginConfiguration:
+    name: barman-cloud.cloudnative-pg.io
+
+# Restore with cluster sill up
+# Create the following Store
+# ---
+# apiVersion: barmancloud.cnpg.io/v1
+# kind: ObjectStore
+# metadata:
+#   name: immich-store-backup
+# spec:
+#   configuration:
+#     destinationPath: s3://cnpg-backup/
+#     endpointURL: http://minio-service.minio.svc.cluster.local:9000
+#     s3Credentials:
+#       accessKeyId:
+#         name: immich-postgres-user
+#         key: MINIO_ACCESS_KEY
+#       secretAccessKey:
+#         name: immich-postgres-user
+#         key: MINIO_SECRET_KEY
+#     wal:
+#       compression: gzip
+# #
+# # Then, you need to create this
+# ---
+# apiVersion: postgresql.cnpg.io/v1
+# kind: Cluster
+# metadata:
+#   name: db-immich-restore
+# spec:
+#   imageName: ghcr.io/tensorchord/cloudnative-pgvecto.rs:16.5-v0.3.0
+#   instances: 1
+#   postgresql:
+#     shared_preload_libraries:
+#       - "vectors.so"
+#   storage:
+#     storageClass: longhorn-storage
+#     size: 100Gi
+#   managed:
+#     roles:
+#       - name: immich
+#         superuser: true
+#         login: true
+#   bootstrap:
+#     recovery:
+#       source: source
+#   plugins:
+#   - name: barman-cloud.cloudnative-pg.io
+#     isWALArchiver: true
+#     parameters:
+#       barmanObjectName: immich-store-backup
+#   externalClusters:
+#   - name: source
+#     plugin:
+#       name: barman-cloud.cloudnative-pg.io
+#       parameters:
+#         # Recovery Object Store (pull, read-only)
+#         barmanObjectName: immich-store
+#         serverName: db-immich
+#
+# This will pull from the backup and recreate the pod, albeit with a different name. The service which is used to communicate with pg will also be called different and needs
+# to be adapted in the values.yaml file. In our case the new service will be called "db-immich-restore".
+# If the entire cluster needs to be redeployed, you will need to restore the minio volume from longhorn, recreate the inital store and execute the above steps.
+# If you need to do this, after doing everything, switch around the names, clean up properly and prepare it like this for quick access. Future Markus will love you for it.

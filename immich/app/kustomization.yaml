@@ -4,6 +4,7 @@ namespace: immich
 resources:
 - ingress.yaml
 - db.yaml
+- secret.yaml
 #- pvc.yaml #only used for initial setup, restore from longhorn if lost
 helmCharts:
   - name: immich
