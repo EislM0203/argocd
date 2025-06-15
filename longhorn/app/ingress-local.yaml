@@ -6,6 +6,8 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: traefik-forward-auth@kubernetescrd,traefik-ip-whitelist@kubernetescrd
     argocd.argoproj.io/ignore-healthcheck: "true"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  labels:
+    app.kubernetes.io/instance: longhorn
   name: longhorn-ingress
   namespace: longhorn
 spec:
