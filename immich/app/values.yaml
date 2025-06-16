@@ -2,7 +2,7 @@
 ## You can find it at https://github.com/bjw-s/helm-charts/tree/main/charts/library/common
 ## Refer there for more detail about the supported values
 env:
-  DB_HOSTNAME: db-immich-rw
+  DB_HOSTNAME: db-immich-2-rw
   DB_PORT: 5432
   DB_DATABASE_NAME: immich
   DB_USERNAME:
