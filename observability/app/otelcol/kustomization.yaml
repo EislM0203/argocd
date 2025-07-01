@@ -7,5 +7,5 @@ helmCharts:
     releaseName: opentelemetry-collector
     namespace: observability
     valuesFile: values.yaml
-    version: 0.125.0
+    version: 0.127.2
     includeCRDs: true
