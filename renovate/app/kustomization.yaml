@@ -9,5 +9,5 @@ helmCharts:
     releaseName: renovate
     namespace: renovate
     valuesFile: values.yaml
-    version: 41.17.2
+    version: 41.43.0
     includeCRDs: true
