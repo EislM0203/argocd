@@ -46,9 +46,9 @@ spec:
             - name: OPENAI_BASE_URL
               value: http://100.64.0.1:8888/v1
             - name: INFERENCE_TEXT_MODEL
-              value: llama-4-scout-17b-16e-instruct
+              value: "Gemma 3n E4B Q4_K_M"
             - name: INFERENCE_IMAGE_MODEL
-              value: llama-4-scout-17b-16e-instruct
+              value: "Gemma 3n E4B Q4_K_M"
             - name: EMBEDDING_TEXT_MODEL
               value: text-embedding-nomic-embed-text-v1.5
             - name: MEILI_ADDR
