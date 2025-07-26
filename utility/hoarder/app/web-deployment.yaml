@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: ghcr.io/hoarder-app/hoarder:0.22.0
+          image: ghcr.io/karakeep-app/karakeep:0.26.0
           ports:
             - containerPort: 3000
           env:
@@ -57,11 +57,11 @@ spec:
               value: http://chrome:9222
             - name: DATA_DIR
               value: /data
-            - name: HOARDER_VERSION
+            - name: KARAKEEP_VERSION
               valueFrom:
                 secretKeyRef:
                   name: hoarder-secret
-                  key: HOARDER_VERSION
+                  key: KARAKEEP_VERSION
             - name: OPENAI_API_KEY
               valueFrom:
                 secretKeyRef:
