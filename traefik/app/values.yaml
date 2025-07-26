@@ -24,8 +24,11 @@ resources:
     cpu: '3000m'
 ports:
   web:
-    redirectTo:
-      port: websecure
+    redirections:
+      entryPoint:
+        to: websecure
+        scheme: https
+        permanent: true
   websecure:
     #hostPort: 443
     port: 8443
